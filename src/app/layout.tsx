@@ -1,3 +1,5 @@
+import NavBar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../styles/globals.css";
@@ -27,9 +29,11 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${poppins.variable} antialiased`}
       >
+         <NavBar />
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
