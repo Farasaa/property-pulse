@@ -74,18 +74,18 @@ export default function NavBar() {
               <div className="flex space-x-2">
                 <Link
                   href="/"
-                   className={`${pathName === '/' ? 'bg-black' : 'text-white hover:bg-gray-900'} rounded-md px-3 py-2`}
+                   className={`${pathName === '/' ? 'bg-black' : ' hover:bg-gray-900'} text-white rounded-md px-3 py-2`}
                   >Home
                 </Link>
                 <Link
                   href="/properties"
-                  className={`${pathName === '/properties' ? 'bg-black' : 'text-white hover:bg-gray-900'} rounded-md px-3 py-2`}
+                  className={`${pathName === '/properties' ? 'bg-black' : 'hover:bg-gray-900'} text-white rounded-md px-3 py-2`}
                   >Properties
                 </Link>
                 {isLoggedIn && (
                 <Link
                   href="/add-property"
-                  className={`${pathName === '/add-property' ? 'bg-black' : 'text-white hover:bg-gray-900'} rounded-md px-3 py-2`}
+                  className={`${pathName === '/add-property' ? 'bg-black' : 'hover:bg-gray-900'}text-white rounded-md px-3 py-2`}
                   >Add Property
                 </Link>
                 )}
@@ -211,19 +211,19 @@ export default function NavBar() {
         <div className="space-y-1 px-2 pb-3 pt-2">
           <Link
             href="/"
-            className={`${pathName === '/' ? 'bg-black' : 'text-white hover:bg-gray-900'} block rounded-md px-3 py-2`}
+            className={`${pathName === '/' ? 'bg-black' : ' hover:bg-gray-900'} text-white block rounded-md px-3 py-2`}
              
             >Home
           </Link>
           <Link
             href="/properties"
-            className={`${pathName === '/properties' ? 'bg-black' : 'text-white hover:bg-gray-900'} block rounded-md px-3 py-2`}
+            className={`${pathName === '/properties' ? 'bg-black' : ' hover:bg-gray-900'} text-white block rounded-md px-3 py-2`}
             >Properties
           </Link>
           {isLoggedIn && (
           <Link
             href="/add-property"
-            className={`${pathName === '/add-property' ? 'bg-black' : 'text-white hover:bg-gray-900'} block rounded-md px-3 py-2`}
+            className={`${pathName === '/add-property' ? 'bg-black' : ' hover:bg-gray-900'} text-white block rounded-md px-3 py-2`}
             >Add Property
           </Link>
           )}
