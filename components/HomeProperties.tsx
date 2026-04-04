@@ -11,6 +11,7 @@ export default async function HomeProperties() {
   await connectDB();
   const properties = await Property.find({}).sort({ createdAt: -1 }).lean();
     const recentProperties = properties.slice(0, 3);
+
    
   return (
     <>
