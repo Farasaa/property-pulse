@@ -18,7 +18,7 @@ export default function PropertyDetails( {property}: {property: PropertyCard}) {
     } = property;
 
 
-    const renderAmenities = amenities.map((amenity) => {
+    const renderAmenities = amenities.map((amenity: string) => {
         return (
             <li key={amenity}>
                 <FaCheck className="text-green-600 mr-2 inline-block" />

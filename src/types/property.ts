@@ -16,7 +16,7 @@
     phone: string;
   }
   
-  export interface PropertyCardProps {
+  export interface PropertyCard {
     _id: string;
    owner: string;
     name: string;
