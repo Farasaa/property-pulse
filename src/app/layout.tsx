@@ -2,7 +2,9 @@ import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "../styles/globals.css";
+import AuthProvider from "../../components/AuthProvider"; 
+import "@/styles/globals.css";
+
 
 const poppins = Poppins({
   variable: "--font-primary",
@@ -25,6 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <AuthProvider >
     <html lang="en">
       <body
         className={`${poppins.variable} ${poppins.variable} antialiased`}
@@ -36,5 +39,6 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </AuthProvider>
   );
 }

@@ -5,7 +5,6 @@ let connected = false;
 
 const connectDB = async () => {
     if (connected) { 
-        console.log("Already connected to the database");
         return;
     }
 
@@ -15,6 +14,7 @@ const connectDB = async () => {
         console.log("Connected to the database");
     }catch (error) {
         console.error("Database connection error:", error);
+        throw error;
     }
 }
 

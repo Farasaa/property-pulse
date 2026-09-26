@@ -1,16 +1,15 @@
 // import properties from '../src/app/properties/properties.json';
 import PropertyCard from './PropertyCard';
 import Link from 'next/link';
-import Property from '../models/Property';
-import connectDB from '../config/database';
+import getRecentProperties from '@/lib/properties'
+
+
 
 
 export default async function HomeProperties() {
 
 
-  await connectDB();
-  const properties = await Property.find({}).sort({ createdAt: -1 }).lean();
-    const recentProperties = properties.slice(0, 3);
+    const recentProperties = await getRecentProperties()
 
    
   return (
