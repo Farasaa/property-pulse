@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import logo from '../public/images/logo-white.png';
-import profileImage from '../public/images/profile.png';
+import profileDefault from '../public/images/profile.png';
 import Link from "next/link";
 import { FaGoogle } from 'react-icons/fa';
 import { useState, useEffect } from "react";
@@ -11,7 +11,7 @@ import { signIn, signOut, getProviders, useSession } from "next-auth/react";
 
 export default function NavBar() {
   const { data: session } = useSession()
-   
+  const profileImage = session?.user?.image
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -78,8 +78,8 @@ export default function NavBar() {
               />
 
               <span className="hidden md:block text-white text-2xl font-bold ml-2"
-                >PropertyPulse</span
-              >
+                >PropertyPulse</span>
+            
             </Link>
             {/* <!-- Desktop Menu Hidden below md screens --> */}
             <div className="hidden md:ml-6 md:block">
@@ -96,8 +96,8 @@ export default function NavBar() {
                 </Link>
                 { session && (
                 <Link
-                  href="/add-property"
-                  className={`${pathName === '/add-property' ? 'bg-black' : 'hover:bg-gray-900'}text-white rounded-md px-3 py-2`}
+                  href="/properties/add"
+                  className={`${pathName === '/add-property' ? 'bg-black' : 'hover:bg-gray-900'} text-white rounded-md px-3 py-2`}
                   >Add Property
                 </Link>
                 )}
@@ -106,12 +106,12 @@ export default function NavBar() {
           </div>
 
           {/* <!-- Right Side Menu (Logged Out) --> */}
-          <div className="hidden md:block md:ml-6">
+          <div className="hidden md:block md:ml-6 ">
             {!session && (
-            <div className="flex items-center">
+            <div className="flex items-center ">
               {providers && Object.values(providers).map((provider, index) =>(
                     <button key={index} onClick={() => signIn(provider.id)}
-                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 cursor-pointer"
               >
                 <FaGoogle className="mr-2 text-white" />
                 <span>Login or Register</span>
@@ -171,7 +171,9 @@ export default function NavBar() {
                   <span className="sr-only">Open user menu</span>
                   <Image
                     className="h-8 w-8 rounded-full"
-                    src={profileImage}
+                    src={profileImage || profileDefault}
+                    width= {40}
+                    height={40}
                     alt=""
                   />
                 </button>
@@ -204,10 +206,14 @@ export default function NavBar() {
                   >Saved Properties 
                 </Link>
                 <button
-                  className="block px-4 py-2 text-sm text-gray-700"
+                  className="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                   role="menuitem"
                   tabIndex={-1}
                   id="user-menu-item-2"
+                  onClick={() => {
+                    setIsProfileMenuOpen(false)
+                    signOut()
+                  }}
                 >
                   Sign Out
                 </button>
@@ -238,13 +244,13 @@ export default function NavBar() {
           { session && (
           <Link
             href="/add-property"
-            className={`${pathName === '/add-property' ? 'bg-black' : ' hover:bg-gray-900'} text-white block rounded-md px-3 py-2`}
+            className={`${pathName === '/properties/add' ? 'bg-black' : ' hover:bg-gray-900'} text-white block rounded-md px-3 py-2`}
             >Add Property
           </Link>
           )}
           {!session && (
           <button
-            className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
+            className="flex items-center cursor-pointer text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
           >
             <i className="fa-brands fa-google mr-2"></i>
             <span>Login or Register</span>
