@@ -34,7 +34,7 @@ export default function PropertyCard({property}: {property: PropertyCard}) {
             width={0}
             height={0}
             sizes='100vw'
-              src={`/properties/${images[0]}`}
+              src={images[0]}
               alt=""
               className="w-full h-auto rounded-t-xl"
             />

@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "utils/authOptions.js"  ],
+, "utils/authOptions.ts"  ],
   "exclude": ["node_modules"]
 }

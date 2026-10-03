@@ -1,9 +1,10 @@
-import PropertyHeaderImage from "../../../../components/PropertyHeaderImage";
-import connectDB from "../../../../config/database";
-import Property from "../../../../models/Property";
+import PropertyHeaderImage from "~/components/PropertyHeaderImage";
+import connectDB from "~/config/database";
+import Property from "~/models/Property";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
-import PropertyDetails from "../../../../components/PropertyDetails";
+import PropertyDetails from "~/components/PropertyDetails";
+import PropertyImages from "~/components/PropertyImages";
 
 
 interface PageProps {
@@ -22,7 +23,7 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
     return <div>Property not found</div>;
   }
 
-  
+  console.log(Array.isArray(property.images));
 
   return (
     <>
@@ -43,6 +44,9 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
           <PropertyDetails property={property} />
         </div>
       </div>
+    </section>
+    <section>
+      <PropertyImages images={property.images} />
     </section>
     </>
   );

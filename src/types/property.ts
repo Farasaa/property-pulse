@@ -34,3 +34,17 @@
       createdAt: string
       updatedAt: string
   }
+
+  export interface AddProperty {
+    type: string,
+    name: string;
+    description: string;
+    location: Location;
+    beds: number;
+    baths: number;
+    square_feet: number; 
+    amenities: string[];
+    rates: Rates;
+    seller_info: SellerInfo;
+    images: string[];
+  }

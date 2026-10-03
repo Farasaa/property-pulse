@@ -16,7 +16,7 @@ export default function InfoBoxes() {
             <InfoBox 
               title="For Property Owners" 
               description="List your properties and reach potential tenants. Rent as an airbnb or long term." 
-              linkHref="/add-property.html" 
+              linkHref="/properties/add" 
               linkText="Add Property" 
               backgroundColor="bg-blue-100"
               linkBackgroundColor="bg-blue-500"

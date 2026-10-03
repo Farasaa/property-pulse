@@ -97,7 +97,7 @@ export default function NavBar() {
                 { session && (
                 <Link
                   href="/properties/add"
-                  className={`${pathName === '/add-property' ? 'bg-black' : 'hover:bg-gray-900'} text-white rounded-md px-3 py-2`}
+                  className={`${pathName === '/properties/add' ? 'bg-black' : 'hover:bg-gray-900'} text-white rounded-md px-3 py-2`}
                   >Add Property
                 </Link>
                 )}
