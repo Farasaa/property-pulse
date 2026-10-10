@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation"
 import cloudinary  from "~/config/cloudinary"
  
+ 
 
 async function addProperty(formData: FormData): Promise<void> {
     await connectDB()
@@ -74,8 +75,10 @@ const propertyData = {
 const newProperty = new Property(propertyData)
 await newProperty.save()
 
+
 revalidatePath('/', 'layout')
 redirect(`/properties/${newProperty._id}`)
+
 
 }
 

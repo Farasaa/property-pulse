@@ -3,6 +3,8 @@ import Footer from "../../components/Footer";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import AuthProvider from "../../components/AuthProvider"; 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import "@/styles/globals.css";
 
 
@@ -37,6 +39,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
     </AuthProvider>

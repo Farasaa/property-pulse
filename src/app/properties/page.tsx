@@ -1,7 +1,7 @@
 
-import PropertyCard from '../../../components/PropertyCard';
-import connectDB from '../../../config/database';
-import Property from '../../../models/Property';
+import PropertyCard from '~/components/PropertyCard';
+import connectDB from '~/config/database';
+import Property from '~/models/Property';
 
 export default async function  PropertiesPage() {
 
