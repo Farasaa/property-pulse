@@ -40,6 +40,7 @@ export const authOptions = {
 
     },
     async session({ session }) {
+      await connectDB()
       const user = await User.findOne({email: session.user.email})
       if (user) session.user.id = user._id.toString()
       return session

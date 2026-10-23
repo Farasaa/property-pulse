@@ -1,4 +1,4 @@
-import type { PropertyCard } from '../src/types/property';
+import type { PropertyCard } from '~/src/types/property';
 import { FaCheck, FaTimes, FaBed, FaBath, FaRulerCombined, FaMapMarker } from 'react-icons/fa';
 
 
