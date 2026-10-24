@@ -1,11 +1,14 @@
+ 
 import type { PropertyCard } from '~/src/types/property';
+import editProperty from '@/app/actions/editProperty';
 
 
 export default function EditProperty({property}: {property: PropertyCard}){
-    const {type, name, description, location, beds, baths, square_feet, amenities, rates, seller_info} = property
+    const {type, name, description, location, beds, baths, square_feet, amenities, rates, seller_info, _id} = property
+    const editPropertyAction = editProperty.bind(null,_id)
 
     return(
-           <form >
+           <form action={editPropertyAction}>
       <h2 className="text-3xl text-center font-semibold mb-6">Edit Property</h2>
 
       <div className="mb-4">
@@ -412,20 +415,7 @@ export default function EditProperty({property}: {property: PropertyCard}){
         />
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="images" className="block text-gray-700 font-bold mb-2">
-          Images (Select up to 4 images)
-        </label>
-        <input
-          type="file"
-          id="images"
-          name="images"
-          className="border rounded w-full py-2 px-3"
-          accept="image/*"
-          multiple
-          required
-        />
-      </div>
+ 
 
       <div>
         <button

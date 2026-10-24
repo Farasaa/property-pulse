@@ -12,16 +12,17 @@ interface PageProps {
 export default async function EditPropertyPage ({params}: PageProps){
     const { id } = await params;
         await connectDB()
-        const propertyToEdit = await Property.findById(id).lean()
-        console.log(propertyToEdit)
+        const propertyDoc = await Property.findById(id).lean()
 
-        if(!propertyToEdit) {
+        if(!propertyDoc) {
             return (
                 <h1 className="text-center text-2xl font-bold mt-10">
                     Property Not found
                 </h1>
             )
         }
+
+        const propertyToEdit = JSON.parse(JSON.stringify(propertyDoc))
 
     return(
         <section className="bg-blue-50">

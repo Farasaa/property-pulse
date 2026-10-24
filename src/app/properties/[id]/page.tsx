@@ -5,6 +5,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import PropertyDetails from "~/components/PropertyDetails";
 import PropertyImages from "~/components/PropertyImages";
+import BookMarkButton from "~/components/BookMarkButton";
+import ShareButtons from "~/components/ShareButtons";
+import ContactForm from "~/components/ContactForm";
 
 
 interface PageProps {
@@ -40,8 +43,13 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
     </section>
     <section className="bg-blue-50">
       <div className="container m-auto py-10 px-6">
-        <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-[70%_28%] w-full gap-6">
           <PropertyDetails property={property} />
+          <aside className="space-y-4">
+            <BookMarkButton />
+            <ShareButtons />
+            <ContactForm /> 
+          </aside>
         </div>
       </div>
     </section>
