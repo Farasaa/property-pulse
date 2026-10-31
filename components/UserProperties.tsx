@@ -6,7 +6,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import deleteProperty from '@/app/actions/deleteProperty';
-import Property from '~/models/Property';
 import { toast } from 'react-toastify';
 
  
@@ -15,7 +14,7 @@ import { toast } from 'react-toastify';
 export default  function UserProperties({userProperties}:{userProperties: PropertyCard[]} ){
 
     const [userProperty, setUserProperty] = useState(userProperties)
-  console.log(userProperties)
+ 
 
   const handleDeleteProperty =  async (propertyId : string) => {
     const confirmed = window.confirm('Are you sure you want to delete this property')

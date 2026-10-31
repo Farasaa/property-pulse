@@ -26,7 +26,7 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
     return <div>Property not found</div>;
   }
 
-  console.log(Array.isArray(property.images));
+  
 
   return (
     <>
@@ -46,7 +46,7 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
         <div className="grid grid-cols-1 md:grid-cols-[70%_28%] w-full gap-6">
           <PropertyDetails property={property} />
           <aside className="space-y-4">
-            <BookMarkButton />
+            <BookMarkButton property={property} />
             <ShareButtons />
             <ContactForm /> 
           </aside>

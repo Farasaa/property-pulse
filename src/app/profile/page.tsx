@@ -34,7 +34,7 @@ const serializedProperties = JSON.parse(JSON.stringify(properties));
 
 
 
-    console.log(properties)
+    
  
     return(
           <section className="bg-blue-50">
