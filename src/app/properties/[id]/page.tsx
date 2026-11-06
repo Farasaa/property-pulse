@@ -20,13 +20,14 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
   const { id } = await params;
 
   await connectDB();
-  const property = await Property.findById(id).lean();
+  const propertyDoc = await Property.findById(id).lean();
 
-  if (!property) {
+  if (!propertyDoc) {
     return <div>Property not found</div>;
   }
 
-  
+  const property = JSON.parse(JSON.stringify(propertyDoc));
+
 
   return (
     <>
