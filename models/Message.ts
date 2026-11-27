@@ -14,7 +14,7 @@ const MessageSchema = new Schema (
             ref: 'User',
             required: true
         },
-        poperty : {
+        property : {
             type: Schema.Types.ObjectId,
             ref: 'Property',
             required: true

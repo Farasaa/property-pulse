@@ -1,12 +1,54 @@
+'use client'
+
 import { FaPaperPlane, FaRegPaperPlane } from "react-icons/fa"
+import addMessage, { ActionState } from "@/app/actions/addMessage";
+import { useActionState, useEffect } from "react";
+import { toast } from 'react-toastify';
+import { useSession } from "next-auth/react";
+import type { PropertyCard } from '~/src/types/property';
 
 
+interface ContactFormProps {
+  property: PropertyCard;
+  recipientId: string;
+}
 
-export default function ContactForm(){
+const initialState: ActionState = {
+  submitted: false,
+  error: undefined,
+};
+
+export default function ContactForm({ property, recipientId }: ContactFormProps) {
+  const [state, formAction, isPending] = useActionState(addMessage, initialState);
+
+  const {data: session} = useSession()
+
+  useEffect(() => {
+    if(state.error) toast.error(state.error)
+    if(state.submitted) toast.success("Message sent successfully")  
+  },[state])
+
+  if(state.submitted){
+    return <p className="text-green-500 mb-4">Your message has been sent.</p>
+  }
+
     return(
+      session &&
         <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
-              <form>
+              <form action={formAction}>
+                <input
+                type="hidden"
+                id="property"
+                name="property"
+                defaultValue={property._id}
+                />
+                <input
+                type="hidden"
+                id="recipient"
+                name="recipient"
+                defaultValue={recipientId}
+                />
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
@@ -57,23 +99,24 @@ export default function ContactForm(){
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="message"
+                    htmlFor="body"
                   >
                     Message:
                   </label>
                   <textarea
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline"
-                    id="message"
-                    name="message"
+                    id="body"
+                    name="body"
                     placeholder="Enter your message"
                   ></textarea>
                 </div>
                 <div>
                   <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+                    className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
                     type="submit"
+                    disabled={isPending}
                   >
-                    <FaPaperPlane className="fas fa-paper-plane mr-2"/> Send Message
+                    <FaPaperPlane className="fas fa-paper-plane mr-2"/> {isPending ? 'Sending...' : 'Send Message' }
                   </button>
                 </div>
               </form>

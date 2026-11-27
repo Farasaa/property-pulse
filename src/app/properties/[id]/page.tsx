@@ -49,7 +49,7 @@ export default async function ViewPropertyDetailsPage({ params }: PageProps) {
           <aside className="space-y-4">
             <BookMarkButton property={property} />
             <ShareButtons property={property}/>
-            <ContactForm /> 
+            <ContactForm property={property} recipientId={property.owner} />
           </aside>
         </div>
       </div>

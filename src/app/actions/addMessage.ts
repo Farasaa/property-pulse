@@ -1,24 +1,29 @@
 'use server'
 import { getSessionUser } from "~/utils/getSessionUser";
 import connectDB from "~/config/database";
-import User from "~/models/User";
 import Message from "~/models/Message";
  
+export type ActionState = {
+  submitted?: boolean;
+  error?: string;
+};
 
-
-async function addMessage(formData: FormData): Promise<{ submitted: boolean }>{
-    await connectDB()
+async function addMessage(
+  prevState: ActionState,
+  formData: FormData
+): Promise<ActionState> {
+  await connectDB();
 
       const sessionUser = await getSessionUser() 
         if(!sessionUser || !sessionUser.userId){
-            throw new Error('User ID is required')
+            return { error: 'Please sign in to send a message.' };
         }
         
         const { userId } = sessionUser
         const recipient = formData.get('recipient')
 
-        if(userId === recipient){
-            throw new Error('You can not send a message to yourself')
+        if(String(userId) === String(recipient)){
+            return { error: 'You cannot send a message to yourself.' };
         }
     
     const newMessage = new Message({
